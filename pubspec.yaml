@@ -23,6 +23,7 @@ dependencies:
   firebase_core: "^1.1.0"
   firebase_auth: "^1.1.2"
   cloud_firestore: "^1.0.7"
+  firebase_storage: "^8.0.5"
 
   # firebase auth ui flows
   flutter_auth_ui: ^2.1.0
@@ -32,6 +33,18 @@ dependencies:
 
   # handles native platform theme setup
   easy_dynamic_theme: ^2.0.0
+
+  # platform runtime permissions
+  permission_handler: ^7.0.0
+  # pick image from photo library
+  image_picker: ^0.7.4
+
+  # cache firebase cloud storage images
+  cached_network_image: ^3.0.0
+  # internet status
+  connectivity: ^3.0.3
+  # files operations
+  path: ^1.8.0
 
 dev_dependencies:
   flutter_test:

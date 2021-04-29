@@ -14,6 +14,8 @@ class FireStoreService {
     Map<String, dynamic> data = {
       't': note.title,
       'd': note.desc,
+      'lp': note.imageLocalStoragePath,
+      'rp': note.imageRemoteStorageUrl,
     };
 
     if (note.isNewNote) {
@@ -24,5 +26,17 @@ class FireStoreService {
           FirebaseFirestore.instance.collection(AuthService().uid).doc(note.id);
       await docRef.set(data);
     }
+  }
+
+  Future<void> updateRemoteUrl(String noteId, String remoteUrl) async {
+    var docRef =
+        FirebaseFirestore.instance.collection(AuthService().uid).doc(noteId);
+
+    Map<String, dynamic> updatedData = {
+      'lp': null,
+      'rp': remoteUrl,
+    };
+
+    await docRef.update(updatedData);
   }
 }

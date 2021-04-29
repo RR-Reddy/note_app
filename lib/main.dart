@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/blocs/connectivity_cubic.dart';
 import 'package:notes_app/blocs/notes_data_cubit.dart';
 import 'package:notes_app/blocs/user_auth_cubit.dart';
 import 'package:notes_app/routes/routes_util.dart';
@@ -16,13 +17,18 @@ void main() async {
   await Firebase.initializeApp();
 
   var app = MultiBlocProvider(providers: [
+
+    BlocProvider<ConnectivityCubic>(
+      lazy: false,
+      create: (BuildContext context) => ConnectivityCubic(),
+    ),
     BlocProvider<UserAuthCubit>(
       lazy: false,
       create: (BuildContext context) => UserAuthCubit(),
     ),
     BlocProvider<NotesDataCubit>(
       lazy: false,
-      create: (BuildContext context) => NotesDataCubit(context.read<UserAuthCubit>()),
+      create: (BuildContext context) => NotesDataCubit(context.read<UserAuthCubit>(),context.read<ConnectivityCubic>()),
     ),
   ], child: EasyDynamicThemeWidget(
     child: App(),

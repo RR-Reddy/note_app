@@ -52,6 +52,8 @@ class AuthService {
     return FirebaseAuth.instance.currentUser;
   }
 
+  bool get isSignedIn => _getUser()!=null;
+
   String get getDisplayName {
     var user = _getUser();
     return user == null ? "" : user.displayName ?? "";
