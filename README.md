@@ -5,7 +5,8 @@ Notes application.
 ## Getting Started
 
 This project is implementation of flutter assignment.
-Please see the user requirement pdf document for app flows under requirement_document folder
+Please see the user requirement pdf document for app flows under **requirement_document** folder
+Please download android apk file under **requirement_document** folder
 
 
 ## project setup :
